@@ -18,7 +18,6 @@ class ViewController: UIViewController, WGDelegate {
     var rendererL: Renderer!
     var rendererR: Renderer!
     var controlBuffer:MTLBuffer! = nil
-    var colorBuffer:MTLBuffer! = nil
     var texture1: MTLTexture!
     var texture2: MTLTexture!
     var pipeline:[MTLComputePipelineState] = []
@@ -163,7 +162,7 @@ class ViewController: UIViewController, WGDelegate {
     
     @objc func rotated() {
         wg.frame = CGRect(x:0, y:0, width:WgWidth, height:view.bounds.height)
-        d2View.frame = CGRect(x:120, y:0, width:view.bounds.width-WgWidth, height:view.bounds.height)
+        d2View.frame = CGRect(x:WgWidth, y:0, width:view.bounds.width-WgWidth, height:view.bounds.height)
         
         setImageViewResolutionAndThreadGroups()
         initRenderViews()
@@ -174,13 +173,13 @@ class ViewController: UIViewController, WGDelegate {
             d2View.isHidden = false
             d3ViewL.isHidden = true
             d3ViewR.isHidden = true
-            d2View.frame = CGRect(x:120, y:0, width:view.bounds.width-WgWidth, height:view.bounds.height)
+            d2View.frame = CGRect(x:WgWidth, y:0, width:view.bounds.width-WgWidth, height:view.bounds.height)
         }
         else {
             d2View.isHidden = true
             d3ViewL.isHidden = false
             
-            var vr = CGRect(x:120, y:0, width:view.bounds.width-WgWidth, height:view.bounds.height)
+            var vr = CGRect(x:WgWidth, y:0, width:view.bounds.width-WgWidth, height:view.bounds.height)
             d3ViewL.frame = vr
 
             if isStereo {
@@ -311,7 +310,7 @@ class ViewController: UIViewController, WGDelegate {
             initRenderViews()
             refresh()
             
-            if hiResFlag && is3D && isStereo {
+            if is3D {  // sometimes pan gesture is ignored. maybe because arcball?..
                 let hk = d3ViewL.bounds
                 arcBall.initialize(Float(hk.size.width*2),Float(hk.size.height*2))
             }
@@ -465,7 +464,6 @@ class ViewController: UIViewController, WGDelegate {
         commandEncoder.setComputePipelineState(pipeline[0])
         commandEncoder.setTexture(texture1, index: 0)
         commandEncoder.setBuffer(controlBuffer, offset: 0, index: 0)
-        commandEncoder.setBuffer(colorBuffer, offset: 0, index: 1)
         commandEncoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
         commandEncoder.endEncoding()
         

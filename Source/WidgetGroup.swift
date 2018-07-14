@@ -33,7 +33,7 @@ struct wgEntryData {
     var visible:Bool = true
     var yCoord = CGFloat()
     
-    func isValueWidget() ->Bool { return kind == .singleFloat || kind == .singleFloat }
+    func isValueWidget() ->Bool { return kind == .singleFloat || kind == .dualFloat }
     
     func getFloatValue(_ who:Int) -> Float {
         switch who {
@@ -253,7 +253,9 @@ class WidgetGroup: UIView {
             return true
         }
 
-        if data[focus].kind == .singleFloat || data[focus].kind == .dualFloat {
+        if data[focus].isValueWidget() {
+            if deltaX == 0 && deltaY == 0 { return false }
+            
             let valueX = fClamp2(data[focus].getFloatValue(0) + deltaX * data[focus].deltaValue, data[focus].mRange)
             data[focus].valuePointerX.storeBytes(of:valueX, as:Float.self)
         
