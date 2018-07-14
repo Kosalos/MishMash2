@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="ipad12_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tXr-a1-R10">
+            <objects>
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="MishMash2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9sQ-bp-QHc"/>
+                        <viewControllerLayoutGuide type="bottom" id="yDg-Pc-LEh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3se-qz-xqx" userLabel="View">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNb-sO-bl3" customClass="MetalTextureView" customModule="MishMash2" customModuleProvider="target">
+                                <rect key="frame" x="25" y="20" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTc-Wh-ygZ" customClass="MTKView">
+                                <rect key="frame" x="25" y="99" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XyV-Yl-0t0" appends="YES" id="XTI-Hz-yjM"/>
+                                    <outletCollection property="gestureRecognizers" destination="AfX-Ia-esd" appends="YES" id="ADQ-un-jev"/>
+                                    <outletCollection property="gestureRecognizers" destination="xfi-kQ-1xe" appends="YES" id="hr9-Tm-uiA"/>
+                                    <outletCollection property="gestureRecognizers" destination="YP9-Da-BA5" appends="YES" id="nwk-6a-c45"/>
+                                    <outletCollection property="gestureRecognizers" destination="eVe-tF-IK4" appends="YES" id="P7c-R7-7mq"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwf-O4-Si2" customClass="MTKView">
+                                <rect key="frame" x="25" y="157" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="veT-tx-7sJ" appends="YES" id="T4C-8r-UQw"/>
+                                    <outletCollection property="gestureRecognizers" destination="3sR-DU-Uaw" appends="YES" id="c4j-eP-X1J"/>
+                                    <outletCollection property="gestureRecognizers" destination="stW-kz-i15" appends="YES" id="x01-lt-CYN"/>
+                                    <outletCollection property="gestureRecognizers" destination="Ah0-8V-EaY" appends="YES" id="aET-v4-vIr"/>
+                                    <outletCollection property="gestureRecognizers" destination="4mN-Xm-OKN" appends="YES" id="EZi-vC-Lw0"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EPI-E3-a0s" customClass="WidgetGroup" customModule="MishMash2" customModuleProvider="target">
+                                <rect key="frame" x="25" y="235" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <gestureRecognizers/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="d2View" destination="gNb-sO-bl3" id="0ME-th-UUt"/>
+                        <outlet property="d3ViewL" destination="eTc-Wh-ygZ" id="duQ-SI-RD2"/>
+                        <outlet property="d3ViewR" destination="Pwf-O4-Si2" id="H3h-Ox-7Cy"/>
+                        <outlet property="wg" destination="EPI-E3-a0s" id="k0d-Kf-5N1"/>
+                        <segue destination="xm3-2k-sRh" kind="popoverPresentation" identifier="widgetGroupSegue" popoverAnchorView="EPI-E3-a0s" id="UZC-jH-nSi">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="IYT-Gi-YRN" kind="popoverPresentation" identifier="saveLoadSegue" popoverAnchorView="EPI-E3-a0s" id="0NM-2n-Se5">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="5CA-AY-ZSF" kind="popoverPresentation" identifier="helpSegue" popoverAnchorView="EPI-E3-a0s" id="nuD-61-DgB">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                        <segue destination="vUJ-3P-OVZ" kind="popoverPresentation" identifier="grammarSegue" popoverAnchorView="EPI-E3-a0s" id="ydB-FE-GMX">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="XyV-Yl-0t0">
+                    <connections>
+                        <action selector="pinchGesture:" destination="BV1-FR-VrT" id="mI4-a4-qhz"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <pinchGestureRecognizer id="veT-tx-7sJ">
+                    <connections>
+                        <action selector="pinchGesture:" destination="BV1-FR-VrT" id="6Af-gV-zFW"/>
+                    </connections>
+                </pinchGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="3sR-DU-Uaw">
+                    <connections>
+                        <action selector="panGesture:" destination="BV1-FR-VrT" id="p3P-d0-9QI"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="AfX-Ia-esd">
+                    <connections>
+                        <action selector="panGesture:" destination="BV1-FR-VrT" id="4WC-5p-tHY"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer id="xfi-kQ-1xe">
+                    <connections>
+                        <action selector="tapGesture:" destination="BV1-FR-VrT" id="Z90-of-dtP"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="stW-kz-i15">
+                    <connections>
+                        <action selector="tapGesture:" destination="BV1-FR-VrT" id="FSf-fP-Kw9"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="YP9-Da-BA5">
+                    <connections>
+                        <action selector="tap2Gesture:" destination="BV1-FR-VrT" id="Ext-Iw-cbq"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Ah0-8V-EaY">
+                    <connections>
+                        <action selector="tap2Gesture:" destination="BV1-FR-VrT" id="X5p-yY-oTR"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="2" id="eVe-tF-IK4">
+                    <connections>
+                        <action selector="pan2Gesture:" destination="BV1-FR-VrT" id="PzY-O6-IqH"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="2" id="4mN-Xm-OKN">
+                    <connections>
+                        <action selector="pan2Gesture:" destination="BV1-FR-VrT" id="FaK-TO-YlD"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-1154" y="-1139"/>
+        </scene>
+        <!--SaveLoadVC-->
+        <scene sceneID="7cL-dd-aq2">
+            <objects>
+                <viewController title="KeypadVC" id="IYT-Gi-YRN" userLabel="SaveLoadVC" customClass="SaveLoadViewController" customModule="MishMash2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YOC-hq-7i4"/>
+                        <viewControllerLayoutGuide type="bottom" id="QOV-Ux-k8R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="left" id="Jf7-hc-17i">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tdf-xW-8Km">
+                                <rect key="frame" x="13" y="9" width="373" height="583"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SLCell" rowHeight="58" id="XKy-ra-BmS" customClass="SaveLoadCell" customModule="MishMash2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="373" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XKy-ra-BmS" id="fcL-5w-6kH">
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="57.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZq-6A-MRc">
+                                                    <rect key="frame" x="2" y="3" width="287" height="46.5"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="287" id="KyH-Hh-fWP"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Load">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="buttonTapped:" destination="XKy-ra-BmS" eventType="touchUpInside" id="pvx-Sj-XjZ"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufx-IT-ja3">
+                                                    <rect key="frame" x="297" y="3" width="68" height="46.5"/>
+                                                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="54" id="Bc1-68-PZl"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Save">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="buttonTapped:" destination="XKy-ra-BmS" eventType="touchUpInside" id="DoP-hI-lQV"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <constraints>
+                                                <constraint firstItem="UZq-6A-MRc" firstAttribute="leading" secondItem="fcL-5w-6kH" secondAttribute="leadingMargin" constant="-6" id="1Vs-dq-xRW"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ufx-IT-ja3" secondAttribute="trailing" id="5au-fI-CgL"/>
+                                                <constraint firstItem="UZq-6A-MRc" firstAttribute="top" secondItem="fcL-5w-6kH" secondAttribute="topMargin" constant="-5" id="Dr0-oy-cRq"/>
+                                                <constraint firstItem="UZq-6A-MRc" firstAttribute="baseline" secondItem="Ufx-IT-ja3" secondAttribute="firstBaseline" id="HAQ-DG-fYd"/>
+                                                <constraint firstItem="Ufx-IT-ja3" firstAttribute="leading" secondItem="UZq-6A-MRc" secondAttribute="trailing" constant="8" id="Lbl-NF-np0"/>
+                                                <constraint firstItem="Ufx-IT-ja3" firstAttribute="baseline" secondItem="UZq-6A-MRc" secondAttribute="firstBaseline" id="NNO-f4-kY6"/>
+                                                <constraint firstItem="UZq-6A-MRc" firstAttribute="top" secondItem="Ufx-IT-ja3" secondAttribute="top" id="aBJ-jd-i7t"/>
+                                                <constraint firstItem="UZq-6A-MRc" firstAttribute="bottom" secondItem="fcL-5w-6kH" secondAttribute="bottomMargin" id="rOP-3M-m4p"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="loadCell" destination="UZq-6A-MRc" id="zbM-B2-Rj2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tdf-xW-8Km" firstAttribute="centerY" secondItem="Jf7-hc-17i" secondAttribute="centerY" id="4JS-29-6nL"/>
+                            <constraint firstItem="tdf-xW-8Km" firstAttribute="centerX" secondItem="Jf7-hc-17i" secondAttribute="centerX" id="Ejo-DF-H96"/>
+                            <constraint firstItem="tdf-xW-8Km" firstAttribute="leading" secondItem="Jf7-hc-17i" secondAttribute="leadingMargin" constant="-7" id="V3K-bu-ZVp"/>
+                            <constraint firstItem="QOV-Ux-k8R" firstAttribute="top" secondItem="tdf-xW-8Km" secondAttribute="bottom" constant="8" symbolic="YES" id="vNm-Rc-Tah"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="400" height="600"/>
+                    <size key="freeformSize" width="400" height="600"/>
+                    <connections>
+                        <outlet property="tableView" destination="tdf-xW-8Km" id="0Zv-dY-IvE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvV-2f-ShA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-901" y="-819"/>
+        </scene>
+        <!--Grammar View Controller-->
+        <scene sceneID="Btq-ZM-kp7">
+            <objects>
+                <viewController id="vUJ-3P-OVZ" customClass="GrammarViewController" customModule="MishMash2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jpB-g8-xaW"/>
+                        <viewControllerLayoutGuide type="bottom" id="OJj-09-1NU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vTd-33-z4i">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="475"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="60R-15-KMa">
+                                <rect key="frame" x="39" y="29" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="ZHc-jc-4NG"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ypS-XC-OtE">
+                                <rect key="frame" x="39" y="65" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="645-kb-5Fb"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q73-Sm-Pf2">
+                                <rect key="frame" x="39" y="101" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="y6x-Si-WdG"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OO5-ui-Uma">
+                                <rect key="frame" x="39" y="137" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="6RA-ma-eQ9"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PKT-Xt-VxS">
+                                <rect key="frame" x="39" y="173" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="7bM-gQ-z46"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Go0-o6-EIB">
+                                <rect key="frame" x="39" y="209" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="cO0-Pz-H99"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Cbf-IN-U64">
+                                <rect key="frame" x="39" y="245" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="0jo-EQ-IeM"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="axG-u1-TZh">
+                                <rect key="frame" x="39" y="281" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="7tv-Or-nV3"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Mw6-CQ-wb3">
+                                <rect key="frame" x="39" y="317" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="m9l-jM-2NU"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1tk-x2-Phe">
+                                <rect key="frame" x="39" y="353" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="VdR-vh-EKd"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fon-Sf-fN2">
+                                <rect key="frame" x="39" y="389" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="s45-zU-nrt"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" tag="11" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Iob-kl-VwP">
+                                <rect key="frame" x="39" y="425" width="172" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="End"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="cChanged:" destination="vUJ-3P-OVZ" eventType="valueChanged" id="340-kE-1ez"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="250" height="475"/>
+                    <size key="freeformSize" width="250" height="475"/>
+                    <connections>
+                        <outlet property="c1" destination="60R-15-KMa" id="HpE-kr-UUX"/>
+                        <outlet property="c2" destination="ypS-XC-OtE" id="yOT-jq-bab"/>
+                        <outlet property="c3" destination="q73-Sm-Pf2" id="SRo-eS-Vvq"/>
+                        <outlet property="c4" destination="OO5-ui-Uma" id="F6S-NJ-idX"/>
+                        <outlet property="c5" destination="PKT-Xt-VxS" id="ARV-6I-EVQ"/>
+                        <outlet property="c6" destination="Go0-o6-EIB" id="na7-Gb-xSr"/>
+                        <outlet property="c7" destination="Cbf-IN-U64" id="eYx-ak-nWV"/>
+                        <outlet property="c8" destination="axG-u1-TZh" id="ET7-kI-Kz2"/>
+                        <outlet property="c9" destination="Mw6-CQ-wb3" id="HAl-MO-yIf"/>
+                        <outlet property="cA" destination="1tk-x2-Phe" id="htc-26-bDZ"/>
+                        <outlet property="cB" destination="fon-Sf-fN2" id="Je7-od-BOc"/>
+                        <outlet property="cC" destination="Iob-kl-VwP" id="xWX-5P-wKW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UEl-00-Ryt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1120" y="-791"/>
+        </scene>
+        <!--Help View Controller-->
+        <scene sceneID="SJ5-qL-JDu">
+            <objects>
+                <viewController id="5CA-AY-ZSF" customClass="HelpViewController" customModule="MishMash2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wV2-J6-T2n"/>
+                        <viewControllerLayoutGuide type="bottom" id="A4n-4y-7J1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="left" id="dWY-RQ-I3o">
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="700"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFJ-2t-2Yd">
+                                <rect key="frame" x="175" y="28" width="445" height="652"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="help" translatesAutoresizingMaskIntoConstraints="NO" id="siP-gk-qmm">
+                                <rect key="frame" x="21" y="28" width="146" height="652"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="146" id="2ya-fV-GBr"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" staticText="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstItem="siP-gk-qmm" firstAttribute="top" secondItem="LFJ-2t-2Yd" secondAttribute="top" id="5FP-Vz-1Bt"/>
+                            <constraint firstItem="LFJ-2t-2Yd" firstAttribute="leading" secondItem="siP-gk-qmm" secondAttribute="trailing" constant="8" symbolic="YES" id="AN9-KG-qN8"/>
+                            <constraint firstItem="siP-gk-qmm" firstAttribute="bottom" secondItem="LFJ-2t-2Yd" secondAttribute="bottom" id="BjW-aZ-F7A"/>
+                            <constraint firstItem="siP-gk-qmm" firstAttribute="leading" secondItem="dWY-RQ-I3o" secondAttribute="leadingMargin" constant="1" id="O4l-fp-7ox"/>
+                            <constraint firstItem="LFJ-2t-2Yd" firstAttribute="trailing" secondItem="dWY-RQ-I3o" secondAttribute="trailingMargin" id="XPg-FM-1qd"/>
+                            <constraint firstAttribute="bottom" secondItem="siP-gk-qmm" secondAttribute="bottom" constant="20" symbolic="YES" id="cyt-c4-eN1"/>
+                            <constraint firstItem="siP-gk-qmm" firstAttribute="top" secondItem="wV2-J6-T2n" secondAttribute="bottom" constant="8" symbolic="YES" id="gnZ-Qc-uYP"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="640" height="700"/>
+                    <size key="freeformSize" width="640" height="700"/>
+                    <connections>
+                        <outlet property="textView" destination="LFJ-2t-2Yd" id="tgm-Rk-fY8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8mt-XW-AV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-560.15625" y="-818.30161054172765"/>
+        </scene>
+        <!--Widget Group View Controller-->
+        <scene sceneID="MCt-FQ-Lu8">
+            <objects>
+                <viewController id="xm3-2k-sRh" customClass="WidgetGroupViewController" customModule="MishMash2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8M1-sU-Fe7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="35" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="km9-ad-Nxr">
+                                <rect key="frame" x="16" y="20" width="285" height="560"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FLCell" textLabel="nUQ-Sx-pVg" rowHeight="25" style="IBUITableViewCellStyleDefault" id="Ocz-1d-bw7" userLabel="FLCell">
+                                        <rect key="frame" x="0.0" y="28" width="285" height="25"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ocz-1d-bw7" id="oSq-Jo-qLs">
+                                            <rect key="frame" x="0.0" y="0.0" width="285" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nUQ-Sx-pVg">
+                                                    <rect key="frame" x="15" y="0.0" width="255" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.36141735409999998" green="0.21103741379999999" blue="0.01243886542" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <viewLayoutGuide key="safeArea" id="cZP-Nh-dXH"/>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="320" height="600"/>
+                    <size key="freeformSize" width="320" height="600"/>
+                    <connections>
+                        <outlet property="tableView" destination="km9-ad-Nxr" id="VJe-3X-KD2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QS1-MI-YCe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1373" y="-818"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="help" width="351" height="1562"/>
+    </resources>
+</document>

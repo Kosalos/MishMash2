@@ -1,0 +1,110 @@
+MishMash2 Fractal
+Collection of algorithms and UX from several other
+fractal apps, hoping to come with a new
+and interesting display.
+My new most favorite app.
+
+The panel on the left holds two kinds of controls:
+buttons, and one or two dimensional widgets.
+
+Widgets:
+Slide your finger up and down the list to select
+the desired widget.  Its' legend will turn Green.
+
+Now on the image,
+slider your finger to control the widget's parameters.
+
+Double tap on a widget legend to toggle it between
+fast and slow editing.  Red graph background = slow.
+
+Buttons:
+The button command is performed by selecting the
+legend, then releasing your finger.
+
+Note: Pinch the image to control 2D zoom.
+
+A. The app Flam3 uses a weighted random function to
+   select which algorithm is used every cycle.
+   This app instead uses a simple grammar, where the
+   characters in a 1-12 character string specify which
+   algorithm is used. The "grammar string" is repeated
+   as necessary during a drawing session.
+   Press "Edit Grammar" to launch the grammar editor dialog.
+   Press "Random" to randomize just the grammar string.
+
+B. The grammar string selects from 4 algorithms for each cycle.
+   These 4 groups hold all the data for each algorithm.
+   Press on the function name
+   (the word at the top of each group)
+   to launch the function selection dialog.
+   The functions themselves come from the Flam3 app.
+   * Translation
+   * Scale
+   * Rotate affect the function output after every cycle.
+   The function group gains a tinted background color when
+   that function is included in the grammar string.
+
+On fractalforums.org, user 3DickUlus posted a beautiful
+   image with the fragment shader attached.
+   I copied the algorithm into this app to
+   do some experimentation.
+
+C. Multiplier
+D. StripeDensity
+E. EscapeRadius are all parameters
+   to 3DickUlus' coloring algorithm.
+   Check out the shader code for usage.
+
+F. Contrast is an effect I added myself.
+G. Color R,G,B  affect the relative coloring of the image.
+
+H. Resolution : Toggle hi / low resolution
+I. Shadow  another homemade effect.
+
+J. "Auto"  Toggle autoMove.
+   Widget values are all swept around by small,
+   slow sine waves.
+   Each time you turn this 'On' the speed and radius
+   of each sine wave is randomized.
+
+K. Move:  Slide one finger across 2D image to Pan.
+
+L. Random : randommly alter all parameters.
+   Keep clicking until you come across a configuration
+   that produces an image..
+
+M. Load the next already saved image (round-robin).
+N. Launch the Save/Load dialog.
+
+O. "Email"  Email image.  Got any friends? (I don't).
+   You can email them the parameters for the current
+   image to their MishMash app.
+
+P. Help : this dialog
+
+Q. 3D : Toggle 3D view on/off.
+   * use two finger Pan to rotate the image.
+   * single tap the image to stop rotation.
+   * Pinch to control zoom.
+
+   I'm sorry, there is a bug I am still working on:
+   in 3D mode, sometimes the 2 finger rotate gestures
+   are ignored, even though zooming might still work.
+   When this happens, cycle 'Resolution'.
+   That usually seems to cure it..
+
+R. Smooth the 3D image.
+   Press to cycle through the settings.
+S. Zoom into the 3D display.
+   Press to cycle through the settings.
+
+T. Stereo :
+   Image is rendered twice, for 'cross-eyed' 3D viewing.
+   With the iPad held two feet away, slightly cross
+   your eyes so that there is a third image in the middle.
+   Relax your gaze, and concentrate only on that
+   middle image, which is in 3D.
+
+U. Height: the height of the pixels while in 3D mode.
+
+
