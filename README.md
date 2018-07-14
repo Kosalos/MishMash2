@@ -9,3 +9,6 @@ and makes good use of little space on the screen. \
 Hope you like it!
 
 ![Screenshot](screenshot.png)
+![Screenshot](screenshot2.png)
+![Screenshot](screenshot3.png)
+
