@@ -42,9 +42,6 @@ class ViewController: UIViewController, WGDelegate {
         super.viewDidLoad()
         vc = self
         setControlPointer(&control);
-        initializeWidgetGroup()
-
-        initRenderViews()
 
         gDevice = MTLCreateSystemDefaultDevice()
         view3D.initialize()
@@ -75,7 +72,32 @@ class ViewController: UIViewController, WGDelegate {
         
         controlBuffer = device.makeBuffer(bytes: &control, length: MemoryLayout<Control>.stride, options: MTLResourceOptions.storageModeShared)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.initRenderViews), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeWgGesture(gesture:)))
+        swipeUp.direction = .up
+        wg.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeWgGesture(gesture:)))
+        swipeDown.direction = .down
+        wg.addGestureRecognizer(swipeDown)
+        
+        initializeWidgetGroup()
+        initRenderViews()
+        setImageViewResolutionAndThreadGroups()
+    }
+    
+    @objc func swipeWgGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        switch gesture.direction {
+        case .up : wg.moveFocus(-1)
+        case .down : wg.moveFocus(+1)
+        default : break
+        }
+    }
+    
+    @IBAction func tap2Gesture(_ sender: UITapGestureRecognizer) {
+        wg.isHidden = !wg.isHidden
+        initRenderViews()
     }
     
     var remoteLoaded:Bool = false
@@ -83,16 +105,17 @@ class ViewController: UIViewController, WGDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        Timer.scheduledTimer(withTimeInterval:0.05, repeats:true) { timer in self.timerHandler() }
         wgCommand(.loadNext) // show first saved image (if any)
 
         if remoteLaunchOptionsLoad() { remoteLoaded = true }
-        Timer.scheduledTimer(withTimeInterval:1, repeats:false) { timer in self.timerKickColdstart() }
+
+        Timer.scheduledTimer(withTimeInterval:0.1, repeats:false) { timer in self.timerKickColdstart() }
     }
 
     @objc func timerKickColdstart() {
         if remoteLoaded { loadedData() }
         refresh()
+        Timer.scheduledTimer(withTimeInterval:0.05, repeats:true) { timer in self.timerHandler() }
     }
 
     //MARK: -
@@ -128,58 +151,53 @@ class ViewController: UIViewController, WGDelegate {
         wg.addSingleFloat(&control.stripeDensity, -10,10,2, "Stripe")
         wg.addSingleFloat(&control.escapeRadius, 0.01,80,3, "Escape")
         wg.addSingleFloat(&control.contrast, 0.1,5,0.5, "Contrast")
-        wg.addSingleFloat(&control.R, 0,1,0.15, "Color R")
-        wg.addSingleFloat(&control.G, 0,1,0.15, "Color G")
+        wg.addDualFloat(UnsafeMutableRawPointer(&control.R),UnsafeMutableRawPointer(&control.G), 0,1,0.15, "Color RG")
         wg.addSingleFloat(&control.B, 0,1,0.15, "Color B")
-        wg.addLine()
-        wg.addColor(10,Float(RowHT)+3)
-        wg.addCommand("Resolution",.resolution)
-        wg.addLine()
-        wg.addColor(12,Float(RowHT)+3)
-        wg.addCommand("Shadow",.shadow  )
-        wg.addLine()
-        wg.addColor(11,Float(RowHT)+3)
-        wg.addCommand("Auto",.auto)
         wg.addLine()
         wg.addMove()
         wg.addLine()
+        wg.addColor(10,Float(RowHT)+3);    wg.addCommand("Resolution",.resolution)
+        wg.addColor(12,Float(RowHT)+3);    wg.addCommand("Shadow",.shadow)
+        wg.addColor(11,Float(RowHT)+3);    wg.addCommand("Auto",.auto)
         wg.addCommand("Random",.random)
         wg.addCommand("Load Next",.loadNext)
         wg.addCommand("Save/Load",.saveLoad)
         wg.addCommand("Email",.email)
         wg.addCommand("Help",.help)
         wg.addLine()
+        wg.addSingleFloat(&control.radialAngle,0,Float.pi/2,0.3, "RadialSym")
+        wg.addLine()
+
         wg.addCommand("3D",.threeD)
-        wg.addCommand("Smooth",.smooth)
-        wg.addCommand("Zoom",.zoom)
-        wg.addCommand("Stereo",.stereo)
-        wg.addSingleFloat(&control.height,-70,70,7, "Height")
+        
+        if is3D {
+            wg.addCommand("Smooth",.smooth)
+            wg.addCommand("Zoom",.zoom)
+            wg.addCommand("Stereo",.stereo)
+            wg.addSingleFloat(&control.height,-70,70,7, "Height")
+        }
     }
     
     //MARK: -
     
     let WgWidth:CGFloat = 120
     
-    @objc func rotated() {
-        wg.frame = CGRect(x:0, y:0, width:WgWidth, height:view.bounds.height)
-        d2View.frame = CGRect(x:WgWidth, y:0, width:view.bounds.width-WgWidth, height:view.bounds.height)
+     @objc func initRenderViews() {
+        let controlWidth = wg.isHidden ? 0 : WgWidth
         
-        setImageViewResolutionAndThreadGroups()
-        initRenderViews()
-    }
-    
-    func initRenderViews() {
+        if !wg.isHidden { wg.frame = CGRect(x:0, y:0, width:WgWidth, height:view.bounds.height) }
+        
         if !is3D {
             d2View.isHidden = false
             d3ViewL.isHidden = true
             d3ViewR.isHidden = true
-            d2View.frame = CGRect(x:WgWidth, y:0, width:view.bounds.width-WgWidth, height:view.bounds.height)
+            d2View.frame = CGRect(x:controlWidth, y:0, width:view.bounds.width-controlWidth, height:view.bounds.height)
         }
         else {
             d2View.isHidden = true
             d3ViewL.isHidden = false
             
-            var vr = CGRect(x:WgWidth, y:0, width:view.bounds.width-WgWidth, height:view.bounds.height)
+            var vr = CGRect(x:controlWidth, y:0, width:view.bounds.width-controlWidth, height:view.bounds.height)
             d3ViewL.frame = vr
 
             if isStereo {
@@ -288,7 +306,7 @@ class ViewController: UIViewController, WGDelegate {
     }
     
     func updateGrammarString() {
-        refresh()
+        updateImage()
         wg.setNeedsDisplay()
     }
     
@@ -331,7 +349,6 @@ class ViewController: UIViewController, WGDelegate {
         case .loadNext :
             let ss = SaveLoadViewController()
             ss.loadNext()
-            setImageViewResolutionAndThreadGroups()
             initRenderViews()
             refresh()
 
@@ -341,6 +358,7 @@ class ViewController: UIViewController, WGDelegate {
         case .threeD :
             is3D = !is3D
             initRenderViews()
+            initializeWidgetGroup()
             refresh()
 
         case .smooth :

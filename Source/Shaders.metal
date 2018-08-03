@@ -13,8 +13,27 @@ kernel void fractalShader
 {
     if(p.x > uint(control.xSize)) return; // screen size not evenly divisible by threadGroups
     if(p.y > uint(control.ySize)) return;
+    uint2 srcP = p;
     
-    float2 z = float2(control.xmin + control.dx * float(p.x), control.ymin + control.dy * float(p.y));
+    if(control.radialAngle > 0.01) { // 0 = don't apply
+        float centerX = control.xSize/2;
+        float centerY = control.ySize/2;
+        float dx = float(p.x - centerX);
+        float dy = float(p.y - centerY);
+        
+        float angle = fabs(atan2(dy,dx));
+        
+        float dRatio = 0.01 + control.radialAngle;
+        while(angle > dRatio) angle -= dRatio;
+        if(angle > dRatio/2) angle = dRatio - angle;
+        
+        float dist = sqrt(dx * dx + dy * dy);
+        
+        srcP.x = uint(centerX + cos(angle) * dist);
+        srcP.y = uint(centerY + sin(angle) * dist);
+    }
+        
+    float2 z = float2(control.xmin + control.dx * float(srcP.x), control.ymin + control.dy * float(srcP.y));
     int iter;
     float avg = 0;
     float lastAdded = 0;

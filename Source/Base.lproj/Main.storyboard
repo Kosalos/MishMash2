@@ -27,6 +27,10 @@
                                 <rect key="frame" x="25" y="20" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Vog-8d-g9N" appends="YES" id="MfE-fX-GMo"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTc-Wh-ygZ" customClass="MTKView">
                                 <rect key="frame" x="25" y="99" width="50" height="50"/>
@@ -115,26 +119,31 @@
                         <action selector="tapGesture:" destination="BV1-FR-VrT" id="FSf-fP-Kw9"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="YP9-Da-BA5">
-                    <connections>
-                        <action selector="tap2Gesture:" destination="BV1-FR-VrT" id="Ext-Iw-cbq"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="Ah0-8V-EaY">
-                    <connections>
-                        <action selector="tap2Gesture:" destination="BV1-FR-VrT" id="X5p-yY-oTR"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="2" id="eVe-tF-IK4">
+                <panGestureRecognizer minimumNumberOfTouches="2" id="eVe-tF-IK4" userLabel="Pan2 D3L Gesture Recognizer">
                     <connections>
                         <action selector="pan2Gesture:" destination="BV1-FR-VrT" id="PzY-O6-IqH"/>
                     </connections>
                 </panGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="2" id="4mN-Xm-OKN">
+                <panGestureRecognizer minimumNumberOfTouches="2" id="4mN-Xm-OKN" userLabel="Pan2 D3R Gesture Recognizer">
                     <connections>
                         <action selector="pan2Gesture:" destination="BV1-FR-VrT" id="FaK-TO-YlD"/>
                     </connections>
                 </panGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Vog-8d-g9N" userLabel="Tap2 D2 Gesture Recognizer">
+                    <connections>
+                        <action selector="tap2Gesture:" destination="BV1-FR-VrT" id="Iap-o4-kdQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="Ah0-8V-EaY" userLabel="Tap2 D3 Gesture Recognizer">
+                    <connections>
+                        <action selector="tap2Gesture:" destination="BV1-FR-VrT" id="YD2-6M-9i6"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="YP9-Da-BA5" userLabel="Tap2 D3 Gesture Recognizer">
+                    <connections>
+                        <action selector="tap2Gesture:" destination="BV1-FR-VrT" id="RdG-Pm-HvN"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1154" y="-1139"/>
         </scene>

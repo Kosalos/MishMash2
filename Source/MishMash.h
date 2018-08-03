@@ -35,7 +35,8 @@ typedef struct {
     float height;
     int smooth;
     int zoom;
-    float future[8];
+    float radialAngle;
+    float future[7];
 } Control;
 
 // Swift access to arrays in Control

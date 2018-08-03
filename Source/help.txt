@@ -21,7 +21,11 @@ Buttons:
 The button command is performed by selecting the
 legend, then releasing your finger.
 
+================================================
 Note: Pinch the image to control 2D zoom.
+Note: Double tap image to toggle display of conrol panel.
+Note: Swipe up/down in the control panel to move focus.
+================================================
 
 A. The app Flam3 uses a weighted random function to
    select which algorithm is used every cycle.
@@ -81,6 +85,13 @@ O. "Email"  Email image.  Got any friends? (I don't).
    image to their MishMash app.
 
 P. Help : this dialog
+
+-----------------------
+Note Shown:  RadialSym
+   Set value to 0 (far left) to disable this function,
+   otherwise the setting determines the radial symmetry
+   of the drawing.
+-----------------------
 
 Q. 3D : Toggle 3D view on/off.
    * use two finger Pan to rotate the image.

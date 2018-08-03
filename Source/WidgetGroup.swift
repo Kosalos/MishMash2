@@ -72,6 +72,7 @@ class WidgetGroup: UIView {
     var deltaY:Float = 0
     
     func initialize() {
+        data.removeAll()
         self.backgroundColor = UIColor.black
         
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(self.handleTap2(_:)))
@@ -84,6 +85,18 @@ class WidgetGroup: UIView {
             data[focus].fastEdit = !data[focus].fastEdit
             setNeedsDisplay()
         }
+    }
+    
+    func moveFocus(_ dir:Int) {
+        if focus == NONE || data.count < 2 { return }
+        
+        while true {
+            focus += dir
+            if focus >= data.count { focus = 0 } else if focus < 0 { focus = data.count-1 }
+            if [ .singleFloat, .dualFloat ].contains(data[focus].kind) { break }
+        }
+        
+        setNeedsDisplay()
     }
     
     func wgCommand(_ cmd:CmdIdent) { delegate?.wgCommand(cmd) }
@@ -236,7 +249,7 @@ class WidgetGroup: UIView {
     override func draw(_ rect: CGRect) {
         context = UIGraphicsGetCurrentContext()
 
-        py = 10
+        py = 4
         for i in 0 ..< data.count { drawEntry(i) }
 
         UIColor.white.setStroke()
