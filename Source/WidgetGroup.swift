@@ -68,6 +68,7 @@ class WidgetGroup: UIView {
     var context : CGContext?
     var data:[wgEntryData] = []
     var focus:Int = NONE
+    var previousFocus:Int = NONE
     var deltaX:Float = 0
     var deltaY:Float = 0
     
@@ -313,10 +314,17 @@ class WidgetGroup: UIView {
     
     //MARK:-
     
+    func shouldMemorizeFocus() -> Bool {
+        if focus == NONE { return false }
+        return [ .singleFloat, .dualFloat, .move ].contains(data[focus].kind)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         var pt = CGPoint()
         for touch in touches { pt = touch.location(in: self) }
         stopChanges()
+        
+        if shouldMemorizeFocus() { previousFocus = focus }
         
         for i in 0 ..< data.count { // move Focus to this entry?
             
@@ -345,7 +353,10 @@ class WidgetGroup: UIView {
         
         if data[focus].kind == .command {
             wgCommand(data[focus].cmd)
+            
             focus = NONE
+            if previousFocus != NONE { focus = previousFocus }
+
             setNeedsDisplay()
         }
         

@@ -165,7 +165,7 @@ class ViewController: UIViewController, WGDelegate {
         wg.addCommand("Email",.email)
         wg.addCommand("Help",.help)
         wg.addLine()
-        wg.addSingleFloat(&control.radialAngle,0,Float.pi,0.3, "RadialSym")
+        wg.addSingleFloat(&control.radialAngle,0,Float.pi/2,0.3, "RadialSym")
         wg.addLine()
 
         wg.addCommand("3D",.threeD)
@@ -192,8 +192,6 @@ class ViewController: UIViewController, WGDelegate {
             d3ViewL.isHidden = true
             d3ViewR.isHidden = true
             d2View.frame = CGRect(x:controlWidth, y:0, width:view.bounds.width-controlWidth, height:view.bounds.height)
-            control.xSize = Int32(d2View.frame.width)
-            control.ySize = Int32(d2View.frame.height)
         }
         else {
             d2View.isHidden = true
@@ -410,6 +408,8 @@ class ViewController: UIViewController, WGDelegate {
     
     func setImageViewResolutionAndThreadGroups() {
         let scale:CGFloat = hiResFlag ? 1.0 : 0.5
+        control.xSize = Int32(d2View.frame.width * scale)
+        control.ySize = Int32(d2View.frame.height * scale)
         let xsz = Int(control.xSize)
         let ysz = Int(control.ySize)
         
@@ -418,6 +418,8 @@ class ViewController: UIViewController, WGDelegate {
             width: xsz,
             height: ysz,
             mipmapped: false)
+        textureDescriptor.usage = [.shaderRead, .shaderWrite]
+
         texture1 = self.device.makeTexture(descriptor: textureDescriptor)!
         texture2 = self.device.makeTexture(descriptor: textureDescriptor)!
         
