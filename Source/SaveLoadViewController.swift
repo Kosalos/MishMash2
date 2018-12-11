@@ -40,7 +40,7 @@ class SaveLoadViewController: UIViewController,UITableViewDataSource, UITableVie
             cell.loadCell.backgroundColor = UIColor(red:0.1, green:0.5, blue:0.4, alpha:1)
         }
         
-        cell.loadCell.setTitle(str, for: UIControlState.normal)
+        cell.loadCell.setTitle(str, for: UIControl.State.normal)
         return cell
     }
 

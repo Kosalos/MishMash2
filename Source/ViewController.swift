@@ -72,7 +72,7 @@ class ViewController: UIViewController, WGDelegate {
         
         controlBuffer = device.makeBuffer(bytes: &control, length: MemoryLayout<Control>.stride, options: MTLResourceOptions.storageModeShared)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.initRenderViews), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.initRenderViews), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeWgGesture(gesture:)))
         swipeUp.direction = .up
@@ -258,7 +258,7 @@ class ViewController: UIViewController, WGDelegate {
     func remoteLaunchOptionsLoad() -> Bool {
         if remoteLaunchOptions == nil { return false }
         
-        let hk:URL = remoteLaunchOptions[UIApplicationLaunchOptionsKey.url] as! URL
+        let hk:URL = remoteLaunchOptions[UIApplication.LaunchOptionsKey.url] as! URL
         let sz = MemoryLayout<Control>.size
         let data = NSData(contentsOf:hk)
         data?.getBytes(&control, length:sz)
@@ -687,12 +687,12 @@ func drawText(_ x:CGFloat, _ y:CGFloat, _ color:UIColor, _ sz:CGFloat, _ str:Str
         let font = UIFont.init(name: "Helvetica", size:sz)!
         
         textFontAttributes = [
-            NSAttributedStringKey.font: font,
-            NSAttributedStringKey.foregroundColor: color,
-            NSAttributedStringKey.paragraphStyle: paraStyle,
+            NSAttributedString.Key.font: font,
+            NSAttributedString.Key.foregroundColor: color,
+            NSAttributedString.Key.paragraphStyle: paraStyle,
         ]
     }
     
-    str.draw(in: CGRect(x:x, y:y, width:800, height:100), withAttributes: textFontAttributes as? [NSAttributedStringKey : Any])
+    str.draw(in: CGRect(x:x, y:y, width:800, height:100), withAttributes: textFontAttributes as? [NSAttributedString.Key : Any])
 }
 

@@ -146,6 +146,7 @@
 				TargetAttributes = {
 					1D14905E1F9FA199004B538F = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -354,7 +355,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Harry.com.MishMash2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Source/ShaderTypes.h;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -374,7 +375,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Harry.com.MishMash2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Source/ShaderTypes.h;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
