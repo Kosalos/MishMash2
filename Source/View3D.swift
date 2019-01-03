@@ -4,16 +4,18 @@ import Metal
 let NUMNODE:Int = Int(SIZE3D * SIZE3D)
 
 var height:Float = 10
-var vBuffer: MTLBuffer?
-var vBuffer2: MTLBuffer?
+var vBuffer: MTLBuffer! = nil
+var vBuffer2: MTLBuffer! = nil
+var iBufferT: MTLBuffer! = nil
 
 class View3D {
-    var iBufferT: MTLBuffer?
     var vData = Array(repeating:TVertex(), count:NUMNODE)
     var iDataT = Array<UInt16>()
     let vSize:Int = MemoryLayout<TVertex>.stride * NUMNODE
     
     func initialize() {
+        if vBuffer != nil  { return }
+
         let fSize = Float(SIZE3D)
 
         var index:Int = 0
@@ -35,23 +37,25 @@ class View3D {
             }
         }
         
-        for y in 0 ..< SIZE3Dm {
-            for x in 0 ..< SIZE3Dm {
-                let p1 = UInt16(x + y * SIZE3D)
-                let p2 = UInt16(x + 1 + y * SIZE3D)
-                let p3 = UInt16(x + (y+1) * SIZE3D)
-                let p4 = UInt16(x + 1 + (y+1) * SIZE3D)
-                
-                iDataT.append(p1)
-                iDataT.append(p3)
-                iDataT.append(p2)
-                
-                iDataT.append(p2)
-                iDataT.append(p3)
-                iDataT.append(p4)
-            }
-        }
+        // ----------------------------------------
+        // triangleStrip terrain indices
         
+        let sz = Int(SIZE3D)
+        var base:Int = 0
+        
+        func addEntry(_ v:Int) { iDataT.append(UInt16(v)) }
+        
+        for _ in 0 ..< sz-1 {
+            for x in 0 ..< sz {
+                addEntry(base+x+sz)
+                addEntry(base+x)
+            }
+            
+            addEntry(base+sz-1) // 2 indices = degenerate triangle to seperate this strip from the next
+            base += sz
+            addEntry(base+sz)
+        }
+
         vBuffer  = gDevice?.makeBuffer(bytes: vData,  length: vSize, options: MTLResourceOptions())
         vBuffer2 = gDevice?.makeBuffer(bytes: vData,  length: vSize, options: MTLResourceOptions())
         iBufferT = gDevice?.makeBuffer(bytes: iDataT, length: iDataT.count * MemoryLayout<UInt16>.size,  options: MTLResourceOptions())
@@ -60,7 +64,7 @@ class View3D {
     func render(_ renderEncoder:MTLRenderCommandEncoder) {
         if vData.count > 0 {
             renderEncoder.setVertexBuffer(vBuffer, offset: 0, index: 0)
-            renderEncoder.drawIndexedPrimitives(type: .triangle,  indexCount: iDataT.count, indexType: MTLIndexType.uint16, indexBuffer: iBufferT!, indexBufferOffset:0)
+            renderEncoder.drawIndexedPrimitives(type: .triangleStrip,  indexCount: iDataT.count, indexType: MTLIndexType.uint16, indexBuffer: iBufferT!, indexBufferOffset:0)
         }
     }
 }
