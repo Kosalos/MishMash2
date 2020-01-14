@@ -24,17 +24,17 @@ class MetalTextureView: MTKView,MTKViewDelegate {
                 let descriptor: MTLRenderPipelineDescriptor = MTLRenderPipelineDescriptor()
                 descriptor.vertexFunction   = library.makeFunction(name: "metalTextureView_Vertex")
                 descriptor.fragmentFunction = library.makeFunction(name: "metalTextureView_Fragment")
-                descriptor.colorAttachments[0].pixelFormat = .rgba8Unorm
+                descriptor.colorAttachments[0].pixelFormat = MTLPixelFormat.bgra8Unorm
                 pipelineR = try device.makeRenderPipelineState(descriptor: descriptor)
             } catch {
                 fatalError(String(describing: error))
             }
             
-            let p1 = float2(0,0)
-            let p2 = float2(1,0)
-            let p3 = float2(0,1)
-            let p4 = float2(1,1)
-            vertices = device.makeBuffer(bytes: [p1,p2,p3,p4], length: 4 * MemoryLayout<float2>.stride,  options: [])
+            let p1 = simd_float2(0,0)
+            let p2 = simd_float2(1,0)
+            let p3 = simd_float2(0,1)
+            let p4 = simd_float2(1,1)
+            vertices = device.makeBuffer(bytes: [p1,p2,p3,p4], length: 4 * MemoryLayout<simd_float2>.stride,  options: [])
             
             let descriptor: MTLSamplerDescriptor = MTLSamplerDescriptor()
             descriptor.magFilter = .nearest

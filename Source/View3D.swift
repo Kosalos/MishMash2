@@ -30,7 +30,7 @@ class View3D {
                 
                 v.txt.x = Float(x) / fSize
                 v.txt.y = Float(1) - Float(z) / fSize
-                v.color = float4( Float(z) / fSize, Float(x) / fSize,1,1)
+                v.color = simd_float4( Float(z) / fSize, Float(x) / fSize,1,1)
                 
                 vData[index] = v
                 index += 1

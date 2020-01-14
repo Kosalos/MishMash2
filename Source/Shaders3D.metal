@@ -12,7 +12,7 @@ struct Transfer {
 
 vertex Transfer texturedVertexShader
 (
- device TVertex* vData [[ buffer(0) ]],
+ constant TVertex* vData [[ buffer(0) ]],
  constant ConstantData& constantData [[ buffer(1) ]],
  unsigned int vid [[ vertex_id ]])
 {

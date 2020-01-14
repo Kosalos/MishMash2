@@ -15,8 +15,8 @@ var constants: [MTLBuffer] = []
 var constantsSize: Int = MemoryLayout<ConstantData>.stride
 var constantsIndex: Int = 0
 let kInFlightCommandBuffers = 3
-var translation = float3(0,0,40)
-var lightpos:float3 = float3()
+var translation = simd_float3(0,0,40)
+var lightpos:simd_float3 = simd_float3()
 var lAngle:Float = 0
 
 class Renderer: NSObject, MTKViewDelegate {
@@ -36,7 +36,7 @@ class Renderer: NSObject, MTKViewDelegate {
         self.commandQueue = gDevice.makeCommandQueue()!
         
         metalKitView.depthStencilPixelFormat = MTLPixelFormat.depth32Float_stencil8
-        metalKitView.colorPixelFormat = MTLPixelFormat.bgra8Unorm_srgb
+        metalKitView.colorPixelFormat = MTLPixelFormat.bgra8Unorm
         metalKitView.sampleCount = 1
         
         mtlVertexDescriptor = Renderer.buildMetalVertexDescriptor()
@@ -124,7 +124,7 @@ class Renderer: NSObject, MTKViewDelegate {
     }
     
     var pace:Int = 0
-    var lightpos:float3 = float3()
+    var lightpos:simd_float3 = simd_float3()
     var lAngle:Float = 0
 
     func draw(in view: MTKView) {
@@ -157,7 +157,7 @@ class Renderer: NSObject, MTKViewDelegate {
         constant_buffer[0].mvp =
             projectionMatrix
             * translate(0,0,translation.z)
-            * rotate(stereoAngle*100,float3(0,1,0))
+            * rotate(stereoAngle*100,simd_float3(0,1,0))
             * arcBall.transformMatrix
 
         if ident == 0 {

@@ -414,7 +414,7 @@ class ViewController: UIViewController, WGDelegate {
         let ysz = Int(control.ySize)
         
         let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(
-            pixelFormat: .bgra8Unorm_srgb,
+            pixelFormat: MTLPixelFormat.bgra8Unorm,
             width: xsz,
             height: ysz,
             mipmapped: false)

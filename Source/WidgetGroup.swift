@@ -28,7 +28,7 @@ struct wgEntryData {
     var valuePointerX:UnsafeMutableRawPointer! = nil
     var valuePointerY:UnsafeMutableRawPointer! = nil
     var deltaValue:Float = 0
-    var mRange = float2()
+    var mRange = simd_float2()
     var fastEdit:Bool = true
     var visible:Bool = true
     var yCoord = CGFloat()
@@ -370,7 +370,7 @@ class WidgetGroup: UIView {
         setNeedsDisplay()
     }
     
-    func fClamp2(_ v:Float, _ range:float2) -> Float {
+    func fClamp2(_ v:Float, _ range:simd_float2) -> Float {
         if v < range.x { return range.x }
         if v > range.y { return range.y }
         return v
